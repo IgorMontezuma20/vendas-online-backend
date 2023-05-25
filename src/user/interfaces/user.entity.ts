@@ -1,7 +1,11 @@
-// eslint-disable-next-line prettier/prettier
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-// eslint-disable-next-line prettier/prettier
 @Entity({ name: 'user' })
 export class UserEntity {
   @PrimaryGeneratedColumn('rowid')
@@ -21,4 +25,13 @@ export class UserEntity {
 
   @Column({ name: 'password', nullable: false })
   password: string;
+
+  @Column({ name: 'type_user', nullable: false })
+  typeUser: number;
+
+  @CreateDateColumn({ name: 'created_at'})
+  createdAt: Date;
+
+  @UpdateDateColumn({ name: 'updated_at'})
+  updatedAt: Date;
 }
