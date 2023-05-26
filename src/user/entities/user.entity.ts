@@ -29,9 +29,9 @@ export class UserEntity {
   @Column({ name: 'type_user', nullable: false })
   typeUser: number;
 
-  @CreateDateColumn({ name: 'created_at'})
+  @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
 
-  @UpdateDateColumn({ name: 'updated_at'})
+  @UpdateDateColumn({ name: 'updated_at' })
   updatedAt: Date;
 }
