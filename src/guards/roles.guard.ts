@@ -33,8 +33,6 @@ export class RolesGuard implements CanActivate {
       return false;
     }
 
-    //console.log('authorization', authorization);
-
     if (!requiredRoles) {
       return true;
     }
