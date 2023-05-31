@@ -7,7 +7,7 @@ export const userEntityMock: UserEntity = {
   email: 'emailmock@emali.com',
   id: 43242,
   name: 'nameMock',
-  password: 'largePassword',
+  password: '$2b$10$FxPMKwtwVHuyjBrj0md7pu5Jo7q11HFv48DTceiE32wW7UQOP.fLK',
   phone: '321532523532',
   typeUser: UserType.User,
   updatedAt: new Date(),
