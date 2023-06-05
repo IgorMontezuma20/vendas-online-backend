@@ -1,12 +1,12 @@
 import { categoryMock } from '../../category/__mocks__/category.mock';
 import { ProductEntity } from '../entities/product.entity';
 
-export const productMocK: ProductEntity = {
+export const productMock: ProductEntity = {
   categoryId: categoryMock.id,
-  id: 21561,
-  name: 'name product mock',
+  id: 7435,
+  image: 'http://image.com',
+  name: 'product name',
   price: 34.3,
-  image: 'ttp://image.com',
   createdAt: new Date(),
   updatedAt: new Date(),
 };
