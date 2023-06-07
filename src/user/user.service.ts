@@ -14,7 +14,7 @@ import { UpdatePasswordDTO } from './dtos/update-password.dto';
 import {
   createpasswordHashed,
   validatePassword,
-} from 'src/utils/passwordValidator';
+} from '../utils/passwordValidator';
 
 @Injectable()
 export class UserService {
