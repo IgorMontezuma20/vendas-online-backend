@@ -1,3 +1,4 @@
+import { ProductService } from './../product/product.service';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CartProductEntity } from './entities/cart-product.entity';
@@ -10,6 +11,7 @@ export class CartProductService {
   constructor(
     @InjectRepository(CartProductEntity)
     private readonly cartProductRepository: Repository<CartProductEntity>,
+    private readonly productService: ProductService,
   ) {}
 
   async verifyProductInCart(
@@ -24,39 +26,39 @@ export class CartProductService {
     });
 
     if (!cartProduct) {
-      throw new NotFoundException('Product not found in cart.');
+      throw new NotFoundException('Product not found in cart');
     }
 
     return cartProduct;
   }
 
   async createProductInCart(
-    insertInCartDTO: InsertInCartDTO,
+    insertCartDTO: InsertInCartDTO,
     cartId: number,
   ): Promise<CartProductEntity> {
     return this.cartProductRepository.save({
-      amount: insertInCartDTO.amount,
-      productId: insertInCartDTO.productId,
+      amount: insertCartDTO.amount,
+      productId: insertCartDTO.productId,
       cartId,
     });
   }
 
-  async insertProdutInCart(
-    insertInCartDTO: InsertInCartDTO,
+  async insertProductInCart(
+    insertCartDTO: InsertInCartDTO,
     cart: CartEntity,
   ): Promise<CartProductEntity> {
     const cartProduct = await this.verifyProductInCart(
-      insertInCartDTO.productId,
+      insertCartDTO.productId,
       cart.id,
     ).catch(() => undefined);
 
     if (!cartProduct) {
-      return this.createProductInCart(insertInCartDTO, cart.id);
+      return this.createProductInCart(insertCartDTO, cart.id);
     }
 
     return this.cartProductRepository.save({
       ...cartProduct,
-      amount: cartProduct.amount + insertInCartDTO.amount,
+      amount: cartProduct.amount + insertCartDTO.amount,
     });
   }
 }
