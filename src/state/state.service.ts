@@ -9,7 +9,7 @@ export class StateService {
     @InjectRepository(StateEntity)
     private readonly stateRepository: Repository<StateEntity>,
   ) {}
-  async getAllStates(): Promise<StateEntity[]> {
+  async getAllState(): Promise<StateEntity[]> {
     return this.stateRepository.find();
   }
 }

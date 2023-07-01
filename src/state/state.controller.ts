@@ -8,6 +8,6 @@ export class StateController {
 
   @Get()
   async getAllState(): Promise<StateEntity[]> {
-    return this.stateService.getAllStates();
+    return this.stateService.getAllState();
   }
 }

@@ -102,7 +102,7 @@ describe('UserService', () => {
   });
 
   it('should return user in update password', async () => {
-    const user = await service.updateUserPassword(
+    const user = await service.updatePasswordUser(
       updatePasswordMock,
       userEntityMock.id,
     );
@@ -111,7 +111,7 @@ describe('UserService', () => {
 
   it('should return error if password is invalid', async () => {
     expect(
-      service.updateUserPassword(updateInvalidPasswordMock, userEntityMock.id),
+      service.updatePasswordUser(updateInvalidPasswordMock, userEntityMock.id),
     ).rejects.toThrowError();
   });
 
@@ -119,7 +119,7 @@ describe('UserService', () => {
     jest.spyOn(userRepository, 'findOne').mockResolvedValue(undefined);
 
     expect(
-      service.updateUserPassword(updatePasswordMock, userEntityMock.id),
+      service.updatePasswordUser(updatePasswordMock, userEntityMock.id),
     ).rejects.toThrowError();
   });
 });
