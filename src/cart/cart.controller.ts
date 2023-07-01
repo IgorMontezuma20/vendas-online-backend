@@ -35,7 +35,7 @@ export class CartController {
   }
 
   @Get()
-  async findCartByuserId(@UserId() userId: number): Promise<ReturnCartDTO> {
+  async findCartByUserId(@UserId() userId: number): Promise<ReturnCartDTO> {
     return new ReturnCartDTO(
       await this.cartService.findCartByUserId(userId, true),
     );
