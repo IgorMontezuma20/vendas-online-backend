@@ -1,3 +1,4 @@
+import { ProductService } from './../product/product.service';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { OrderEntity } from './entities/order.entity';
@@ -16,13 +17,14 @@ export class OrderService {
     private readonly paymentService: PaymentService,
     private readonly cartService: CartService,
     private readonly orderProductService: OrderProductService,
+    private readonly productService: ProductService,
   ) {}
 
   async createOrder(
     createOrderDTO: CreateOrderDTO,
     cartId: number,
     userId: number,
-  ) {
+  ): Promise<OrderEntity> {
     const payment: PaymentEntity = await this.paymentService.createPayment(
       createOrderDTO,
     );
@@ -36,15 +38,24 @@ export class OrderService {
 
     const cart = await this.cartService.findCartByUserId(userId, true);
 
-    cart.cartProduct?.forEach((cartProduct) => {
-      this.orderProductService.createOrderProduct(
-        cartProduct.productId,
-        order.id,
-        0,
-        cartProduct.amount,
-      );
-    });
+    const products = await this.productService.findAll(
+      cart.cartProduct?.map((cartProduct) => cartProduct.productId),
+    );
 
-    return null;
+    console.log('products', products);
+
+    await Promise.all(
+      cart.cartProduct?.map((cartProduct) =>
+        this.orderProductService.createOrderProduct(
+          cartProduct.productId,
+          order.id,
+          products.find((product) => product.id === cartProduct.productId)
+            ?.price || 0,
+          cartProduct.amount,
+        ),
+      ),
+    );
+
+    return order;
   }
 }
