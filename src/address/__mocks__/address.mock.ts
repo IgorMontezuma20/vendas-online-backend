@@ -11,4 +11,5 @@ export const addressMock: AddressEntity = {
   addressNumber: 16516,
   createdAt: new Date(),
   updatedAt: new Date(),
+  numberAddress: undefined,
 };

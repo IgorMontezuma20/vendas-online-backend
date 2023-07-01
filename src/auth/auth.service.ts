@@ -33,7 +33,7 @@ export class AuthService {
     }
 
     return {
-      acessToken: this.jwtService.sign({ ...new LoginPayload(user) }),
+      accessToken: this.jwtService.sign({ ...new LoginPayload(user) }),
       user: new ReturnUserDto(user),
     };
   }

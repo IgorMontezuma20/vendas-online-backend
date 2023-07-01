@@ -18,6 +18,7 @@ import { PaymentStatusModule } from './payment-status/payment-status.module';
 import { PaymentModule } from './payment/payment.module';
 import { OrderModule } from './order/order.module';
 import { OrderProductModule } from './order-product/order-product.module';
+import { AddressController } from './address/address.controller';
 
 @Module({
   imports: [
@@ -51,7 +52,7 @@ import { OrderProductModule } from './order-product/order-product.module';
     OrderModule,
     OrderProductModule,
   ],
-  controllers: [],
+  controllers: [AddressController],
   providers: [
     {
       provide: APP_GUARD,
