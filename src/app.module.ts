@@ -52,7 +52,7 @@ import { AddressController } from './address/address.controller';
     OrderModule,
     OrderProductModule,
   ],
-  controllers: [AddressController],
+  controllers: [],
   providers: [
     {
       provide: APP_GUARD,
