@@ -45,7 +45,7 @@ export class OrderEntity {
   address?: AddressEntity;
 
   @ManyToOne(() => PaymentEntity, (payment) => payment.orders)
-  @JoinColumn({ name: 'user_id', referencedColumnName: 'id' })
+  @JoinColumn({ name: 'payment_id', referencedColumnName: 'id' })
   payment?: PaymentEntity;
 
   @OneToMany(() => OrderProductEntity, (orderProduct) => orderProduct.orders)

@@ -14,5 +14,5 @@ export class CreateOrderDTO {
 
   @IsOptional()
   @IsString()
-  datePayment: string;
+  datePayment?: string;
 }
