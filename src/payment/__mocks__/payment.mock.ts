@@ -1,4 +1,4 @@
-import { PaymentStatusEntity } from 'src/payment-status/entities/payment-status.entity';
+import { PaymentStatusEntity } from '../../payment-status/entities/payment-status.entity';
 import { PaymentType } from '../../payment-status/enum/paymentType.enum';
 import { PaymentEntity } from '../entities/payment.entity';
 

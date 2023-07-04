@@ -1,7 +1,8 @@
-import { PaymentCreditCardEntity } from '../entities/payment-credit-card.entity';
+import { PaymentPixEntity } from '../entities/payment-pix.entity';
 import { paymentMock } from './payment.mock';
 
-export const paymentCreditCardMock: PaymentCreditCardEntity = {
+export const paymentPixMock: PaymentPixEntity = {
   ...paymentMock,
-  amountPayments: 54,
+  code: 'fdsafdsa',
+  paymentDate: new Date('2020-01-01'),
 };
